@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const PostEmployee = () => {
   const [name, setName] = useState("");
-  const [position, setPosition] = useState("");
+  const [avatar,setAvatar] = useState("")
+  const [description, setDescription] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -15,11 +16,12 @@ const PostEmployee = () => {
     setLoading(true);
 
     try {
-      await axios.post("https://67e9cc5bbdcaa2b7f5ba3216.mockapi.io/employees", {
+      await axios.post("https://6239881763fdd477ac142016.mockapi.io/persons", {
         name,
-        position,
+        avatar,
+        description,
       });
-      navigate("/"); // ไปที่หน้าแสดงข้อมูลพนักงานหลังจากบันทึก
+      navigate("/"); 
     } catch (err) {
       setError("❌ Failed to add employee. Please try again later.");
     } finally {
@@ -52,8 +54,18 @@ const PostEmployee = () => {
           <label className="block">Position</label>
           <input
             type="text"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="border p-2 w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block">Avatar</label>
+          <input
+            type="text"
+            value={avatar}
+            onChange={(e) => setAvatar(e.target.value)}
             className="border p-2 w-full"
             required
           />

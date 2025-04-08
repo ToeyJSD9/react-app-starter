@@ -30,7 +30,10 @@ const GetEmployees = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-2">Employee Cards</h2>
+      <Link to={`/add`} className="text-green-500">Add New Employee
+
+</Link>
+      <h6 className=" font-bold mb-2">Employee Cards</h6>
 
       {loading && <p className="text-blue-600">Loading employees...</p>}
 
@@ -43,12 +46,12 @@ const GetEmployees = () => {
       )}
 
       {!loading && !error && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-5 gap-4">
           {employees.map((employee) => (
             <div key={employee.id} className="border p-4 rounded">
               <img src={employee.avatar} alt="" />
               <h3>{employee.name}</h3>
-              <p>{employee.position}</p>
+              <p className="text-pink-500">{employee.description}</p>
               <Link
                 to={`/edit/${employee.id}`}
                 className="text-blue-500 hover:underline"
