@@ -29,7 +29,7 @@ const GetEmployees = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4  md:w-auto lg:w-screen">
       <Link to={`/add`} className="text-green-500">Add New Employee
 
 </Link>
@@ -46,7 +46,7 @@ const GetEmployees = () => {
       )}
 
       {!loading && !error && (
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {employees.map((employee) => (
             <div key={employee.id} className="border p-4 rounded">
               <img src={employee.avatar} alt="" />
