@@ -29,11 +29,11 @@ const GetEmployees = () => {
   }, []);
 
   return (
-    <div className="p-4  md:w-auto lg:w-screen">
-      <Link to={`/add`} className="text-green-500">Add New Employee
-
-</Link>
-      <h6 className=" font-bold mb-2">Employee Cards</h6>
+    <div className="p-4 md:w-auto lg:w-screen">
+      <Link to={`/add`} className="text-green-500">
+        Add New Employee
+      </Link>
+      <h6 className="font-bold mb-2">Employee Cards</h6>
 
       {loading && <p className="text-blue-600">Loading employees...</p>}
 
@@ -49,22 +49,25 @@ const GetEmployees = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {employees.map((employee) => (
             <div key={employee.id} className="border p-4 rounded">
-              <img src={employee.avatar} alt="" />
+              <Link to={`/indetail/${employee.id}`}>
+                <img src={employee.avatar} alt="" />
+              </Link>
               <h3>{employee.name}</h3>
               <p className="text-pink-500">{employee.description}</p>
-              <div className=" pt-5  ">
-              <Link
-                to={`/edit/${employee.id}`}
-                className="text-white hover:underline bg-black rounded"
-              >
-                Edit
-              </Link>
-              <Link
-                to={`/delete/${employee.id}`}
-                className="text-red-500 hover:underline ml-4 bg-blue-400 rounded "
-              >
-                Delete
-              </Link>
+              <p className="text-yellow-300">{employee.city}</p>
+              <div className="pt-5">
+                <Link
+                  to={`/edit/${employee.id}`}
+                  className="text-white hover:underline bg-black rounded"
+                >
+                  Edit
+                </Link>
+                <Link
+                  to={`/delete/${employee.id}`}
+                  className="text-red-500 hover:underline ml-4 bg-blue-400 rounded "
+                >
+                  Delete
+                </Link>
               </div>
             </div>
           ))}

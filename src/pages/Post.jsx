@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const PostEmployee = () => {
   const [name, setName] = useState("");
-  const [avatar,setAvatar] = useState("")
+  const [city, setCity] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,9 +20,10 @@ const PostEmployee = () => {
       await axios.post("https://6239881763fdd477ac142016.mockapi.io/persons", {
         name,
         avatar,
+        city,
         description,
       });
-      navigate("/"); 
+      navigate("/");
     } catch (err) {
       setError("❌ Failed to add employee. Please try again later.");
     } finally {
@@ -61,6 +63,17 @@ const PostEmployee = () => {
           />
         </div>
         <div>
+          <label className="block">City</label>
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className="border p-2 w-full"
+            required
+          />
+        </div>
+
+        <div>
           <label className="block">Avatar</label>
           <input
             type="text"
@@ -69,6 +82,15 @@ const PostEmployee = () => {
             className="border p-2 w-full"
             required
           />
+          {avatar && (
+            <div className="mt-4">
+              <img
+                src={avatar}
+                alt="อุ้มอยากเห็นรูปเลยทันที"
+                className="w-40 h-40 object-full"
+              />
+            </div>
+          )}
         </div>
         <button
           type="submit"
