@@ -47,17 +47,16 @@ const Indetail = () => {
             alt={employee.name}
             className="w-50 h-50 rounded-full"
           />
-          <h2 className="font-bold text-xl">{employee.name}</h2>
-          <p className="text-pink-500">{employee.description}</p>
+          
           <div className="mt-4">
             <p>
-              <strong>Email:</strong> {employee.email}
+              <strong>Name:</strong> {employee.name}
             </p>
             <p>
-              <strong>Phone:</strong> {employee.phone}
+              <strong>city:</strong> {employee.city}
             </p>
             <p>
-              <strong>Position:</strong> {employee.position}
+              <strong>Position:</strong> {employee.description}
             </p>
           </div>
         </div>
