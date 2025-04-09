@@ -11,9 +11,9 @@ const DeleteEmployee = () => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://67e9cc5bbdcaa2b7f5ba3216.mockapi.io/employees/${id}`
+        `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`
       );
-      navigate("/"); // ไปที่หน้าแสดงข้อมูลพนักงานหลังจากลบ
+      navigate("/");
     } catch (err) {
       console.error(err);
     } finally {
@@ -24,7 +24,7 @@ const DeleteEmployee = () => {
   return (
     <div className="p-4">
       <h2 className="text-xl font-bold mb-2">Delete Employee</h2>
-      <p>Are you sure you want to delete this employee?</p>
+      <p>SURE TO DELETE BRO? </p>
       <button
         onClick={handleDelete}
         className={`bg-red-500 text-white p-2 w-full ${

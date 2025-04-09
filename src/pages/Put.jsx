@@ -4,7 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const PutEmployee = () => {
   const [name, setName] = useState("");
-  const [position, setPosition] = useState("");
+  const [avatar,setAvatar] = useState("")
+  const [description, setDescription] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -14,10 +15,12 @@ const PutEmployee = () => {
     const fetchEmployee = async () => {
       try {
         const res = await axios.get(
-          `https://67e9cc5bbdcaa2b7f5ba3216.mockapi.io/employees/${id}`
+          `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`
         );
         setName(res.data.name);
-        setPosition(res.data.position);
+        setDescription(res.data.description);
+        setAvatar(res.data.avatar)
+        
       } catch (err) {
         setError("❌ Failed to fetch employee data.");
       }
@@ -33,8 +36,8 @@ const PutEmployee = () => {
 
     try {
       await axios.put(
-        `https://67e9cc5bbdcaa2b7f5ba3216.mockapi.io/employees/${id}`,
-        { name, position }
+        `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`,
+        { name,avatar ,description }
       );
       navigate("/"); 
     } catch (err) {
@@ -69,8 +72,18 @@ const PutEmployee = () => {
           <label className="block">Position</label>
           <input
             type="text"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="border p-2 w-full"
+            required
+          />
+        </div>
+        <div>
+          <label className="block">Avatar</label>
+          <input
+            type="text"
+            value={avatar}
+            onChange={(e) => setAvatar(e.target.value)}
             className="border p-2 w-full"
             required
           />

@@ -52,18 +52,20 @@ const GetEmployees = () => {
               <img src={employee.avatar} alt="" />
               <h3>{employee.name}</h3>
               <p className="text-pink-500">{employee.description}</p>
+              <div className=" pt-5  ">
               <Link
                 to={`/edit/${employee.id}`}
-                className="text-blue-500 hover:underline"
+                className="text-white hover:underline bg-black rounded"
               >
                 Edit
               </Link>
               <Link
                 to={`/delete/${employee.id}`}
-                className="text-red-500 hover:underline ml-4"
+                className="text-red-500 hover:underline ml-4 bg-blue-400 rounded "
               >
                 Delete
               </Link>
+              </div>
             </div>
           ))}
         </div>
