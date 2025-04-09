@@ -47,7 +47,7 @@ const Indetail = () => {
             alt={employee.name}
             className="w-50 h-50 rounded-full"
           />
-          
+
           <div className="mt-4">
             <p>
               <strong>Name:</strong> {employee.name}
