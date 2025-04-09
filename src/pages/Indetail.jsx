@@ -45,7 +45,7 @@ const Indetail = () => {
           <img
             src={employee.avatar}
             alt={employee.name}
-            className="w-32 h-32 rounded-full"
+            className="w-50 h-50 rounded-full"
           />
           <h2 className="font-bold text-xl">{employee.name}</h2>
           <p className="text-pink-500">{employee.description}</p>
