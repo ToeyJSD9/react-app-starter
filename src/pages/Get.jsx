@@ -29,7 +29,7 @@ const GetEmployees = () => {
   }, []);
 
   return (
-    <div className="p-4 aligh-center justify-center gap-16 ">
+    <div className="p-4 aligh-center justify-center gap-16  ">
       <div className="object-top">
       <Link to={`/add`} className="text-green-500">
         Add New Employee
