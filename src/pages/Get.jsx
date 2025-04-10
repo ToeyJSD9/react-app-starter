@@ -29,10 +29,12 @@ const GetEmployees = () => {
   }, []);
 
   return (
-    <div className="p-4 flex aligh-center justify-center gap-16">
+    <div className="p-4 aligh-center justify-center gap-16 ">
+      <div className="object-top">
       <Link to={`/add`} className="text-green-500">
         Add New Employee
       </Link>
+      </div>
       <h6 className="font-bold mb-2">Employee Cards</h6>
 
       {loading && <p className="text-blue-600">Loading employees...</p>}
