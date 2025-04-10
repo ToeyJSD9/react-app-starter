@@ -48,7 +48,7 @@ const PutEmployee = () => {
   };
 
   return (
-    <div className="flex aligh-center justify-center">
+    <div className="p-4 flex aligh-center justify-center gap-16">
       <h2 className="text-xl font-bold mb-2">Edit Employee</h2>
       {error && (
         <div className="mt-2 text-red-600 bg-red-100 p-2 rounded">

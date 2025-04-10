@@ -39,7 +39,7 @@ const Indetail = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="p-4 flex aligh-center justify-center gap-16">
       {employee && (
         <div className="border p-4 rounded">
           <img
