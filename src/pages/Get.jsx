@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const GetEmployees = () => {
   const [employees, setEmployees] = useState([]);
@@ -60,7 +60,7 @@ const GetEmployees = () => {
               </Link>
               <h3>{employee.name}</h3>
               <p className="text-pink-500">{employee.description}</p>
-              <p className="text-yellow-300">{employee.city}</p>
+              <p className="text-amber-700">{employee.city}</p>
               <div className="pt-5">
                 <Link
                   to={`/edit/${employee._id}`}
