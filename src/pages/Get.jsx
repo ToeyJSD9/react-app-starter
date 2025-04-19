@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const API_BASE = "http://localhost:5000";
+
 const GetEmployees = () => {
   const [employees, setEmployees] = useState([]);
   const [error, setError] = useState("");
@@ -13,9 +15,7 @@ const GetEmployees = () => {
       setLoading(true);
 
       try {
-        const res = await axios.get(
-          "https://6239881763fdd477ac142016.mockapi.io/persons"
-        );
+        const res = await axios.get(`${API_BASE}/persons`);
         setEmployees(res.data);
       } catch (err) {
         console.error(err);
@@ -29,11 +29,11 @@ const GetEmployees = () => {
   }, []);
 
   return (
-    <div className="p-4 aligh-center justify-center gap-16  ">
+    <div className="p-4 align-center justify-center gap-16">
       <div className="object-top">
-      <Link to={`/add`} className="text-green-500">
-        Add New Employee
-      </Link>
+        <Link to={`/add`} className="text-green-500">
+          Add New Employee
+        </Link>
       </div>
       <h6 className="font-bold mb-2">Employee Cards</h6>
 
@@ -50,23 +50,27 @@ const GetEmployees = () => {
       {!loading && !error && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {employees.map((employee) => (
-            <div key={employee.id} className="border p-4 rounded">
-              <Link to={`/indetail/${employee.id}`}>
-                <img src={employee.avatar} alt="" />
+            <div key={employee._id} className="border p-4 rounded">
+              <Link to={`/indetail/${employee._id}`}>
+                <img
+                  src={employee.avatar}
+                  alt={`${employee.name}`}
+                  className="w-full h-auto object-cover rounded"
+                />
               </Link>
               <h3>{employee.name}</h3>
               <p className="text-pink-500">{employee.description}</p>
               <p className="text-yellow-300">{employee.city}</p>
               <div className="pt-5">
                 <Link
-                  to={`/edit/${employee.id}`}
+                  to={`/edit/${employee._id}`}
                   className="text-white hover:underline bg-black rounded"
                 >
                   Edit
                 </Link>
                 <Link
-                  to={`/delete/${employee.id}`}
-                  className="text-red-500 hover:underline ml-4 bg-blue-400 rounded "
+                  to={`/delete/${employee._id}`}
+                  className="text-red-500 hover:underline ml-4 bg-blue-400 rounded"
                 >
                   Delete
                 </Link>

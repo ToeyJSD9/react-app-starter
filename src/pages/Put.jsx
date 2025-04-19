@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+const API_BASE = 'http://localhost:5000';
+
 
 const PutEmployee = () => {
   const [name, setName] = useState("");
@@ -15,19 +17,21 @@ const PutEmployee = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const res = await axios.get(
-          `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`
-        );
-        setName(res.data.name);
-        setDescription(res.data.description);
-        setAvatar(res.data.avatar);
+        const res = await axios.get(`${API_BASE}/persons/${id}`); 
+        const person = res.data
+  
+        setName(person.name || "");
+        setDescription(person.description || "");
+        setAvatar(person.avatar || "");
+        setCity(person.city || "");
       } catch (err) {
         setError("❌ Failed to fetch employee data.");
       }
     };
-
+  
     fetchEmployee();
   }, [id]);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,9 +40,10 @@ const PutEmployee = () => {
 
     try {
       await axios.put(
-        `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`,
+        `${API_BASE}/persons/${id}`,
         { name, avatar, description, city }
       );
+      
       navigate("/");
     } catch (err) {
       setError("❌ Failed to update employee. Please try again later.");
@@ -64,7 +69,7 @@ const PutEmployee = () => {
           <label className="block">Name</label>
           <input
             type="text"
-            value={name}
+            value={name || ""}
             onChange={(e) => setName(e.target.value)}
             className="border p-2 w-full"
             required

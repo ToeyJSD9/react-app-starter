@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+const API_BASE = 'http://localhost:5000';
 
 const DeleteEmployee = () => {
   const [loading, setLoading] = useState(false);
@@ -10,9 +11,8 @@ const DeleteEmployee = () => {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      await axios.delete(
-        `https://6239881763fdd477ac142016.mockapi.io/persons/${id}`
-      );
+      await axios.delete(`${API_BASE}/persons/${id}`);
+
       navigate("/");
     } catch (err) {
       console.error(err);

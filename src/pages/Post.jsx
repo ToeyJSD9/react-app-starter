@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API_BASE = 'http://localhost:5000';
 
 const PostEmployee = () => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const PostEmployee = () => {
     setLoading(true);
 
     try {
-      await axios.post("https://6239881763fdd477ac142016.mockapi.io/persons", {
+      await axios.post(`${API_BASE}/persons`, {
         name,
         avatar,
         city,
